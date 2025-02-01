@@ -29,6 +29,11 @@ p {
 	margin: 20px 0;
 }
 
+.carousel {
+	padding: 0 10%;
+	margin: 20px 0;
+}
+
 .image {
 	border-radius: 4px;
 	max-width: 1000px;
