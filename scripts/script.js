@@ -24,3 +24,42 @@ const navSlide = ()=> {
 }
 
 navSlide();
+
+(function () {
+    var track = document.getElementById('photoCarouselTrack');
+    if (!track) return;
+
+    var slides = track.querySelectorAll('.photo-carousel-img');
+    var total = slides.length;
+    var current = 0;
+    var timer;
+
+    function goTo(index) {
+        current = (index + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function startTimer() {
+        timer = setInterval(next, 4000);
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        startTimer();
+    }
+
+    document.getElementById('photoCarouselPrev').addEventListener('click', function () {
+        prev();
+        resetTimer();
+    });
+
+    document.getElementById('photoCarouselNext').addEventListener('click', function () {
+        next();
+        resetTimer();
+    });
+
+    startTimer();
+}());
